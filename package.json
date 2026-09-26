@@ -1,0 +1,10 @@
+{
+  "name": "lokesh-esports-backend",
+  "version": "1.0.0",
+  "description": "Backend for Lokesh Esports",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {}
+}
