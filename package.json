@@ -1,10 +1,10 @@
 {
   "name": "lokesh-esports-backend",
   "version": "1.0.0",
-  "description": "Backend for Lokesh Esports",
   "main": "index.js",
-  "scripts": {
-    "start": "node index.js"
-  },
-  "dependencies": {}
+  "dependencies": {
+    "express": "^4.18.2",
+    "firebase-admin": "^11.0.0",
+    "node-telegram-bot-api": "^0.61.0"
+  }
 }
