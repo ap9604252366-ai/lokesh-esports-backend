@@ -1,5 +1,10 @@
 const express = require('express');
 const admin = require('firebase-admin');
+const TelegramBot = require('node-telegram-bot-api');
+
+// Telegram Bot initialization (Aapka token configure kar diya gaya hai)
+const token = '8854129662:AAFI3VABbsHI_RgGQ7mr0IuVs7mvfMYkt7w';
+const bot = new TelegramBot(token, { polling: true });
 
 // Firebase Admin initialization (agar zaroorat ho)
 // admin.initializeApp({
@@ -11,7 +16,19 @@ app.use(express.json());
 
 // 1. Root Test Route
 app.get('/', (req, res) => {
-    res.send('Lokesh Esports Backend is Live!');
+    res.send('Lokesh Esports Backend is Live with Telegram Bot!');
+});
+
+// ================= TELEGRAM BOT LISTENERS =================
+bot.onText(/\/start/, (msg) => {
+    const chatId = msg.chat.id;
+    const userName = msg.from.first_name || 'Player';
+    bot.sendMessage(chatId, `🔥 Welcome to Lokesh Esports, ${userName}!\n\nAap yahan tournament updates aur wallet alerts pa sakte hain.`);
+});
+
+bot.onText(/\/balance/, (msg) => {
+    const chatId = msg.chat.id;
+    bot.sendMessage(chatId, `💰 Aapka Lokesh Esports Wallet balance check karne ke liye app open karein.`);
 });
 
 // 2. Razorpay Webhook Endpoint
